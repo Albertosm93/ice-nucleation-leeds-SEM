@@ -16,7 +16,7 @@ def SEM_csv_to_df(path):
     """
     
     #read data as np array
-    data=np.genfromtxt("data/"+path,dtype=str,delimiter=',')
+    data=np.genfromtxt("data/chemical_raw/"+path,dtype=str,delimiter=',')
     
     #get column with indexes of each data section
     index=data[:,0]
@@ -51,7 +51,7 @@ def SEM_csv_to_df(path):
     df_SEM=extract_columns(final_df)
     
     #save to csv within outputs folder
-    df_SEM.to_csv("outputs/"+path[:-4]+"_processed.csv",index=False)  
+    df_SEM.to_csv("data/chemical_processed/"+path[:-4]+"_processed.csv",index=False)  
 
     return df_SEM
     
@@ -89,7 +89,7 @@ def extract_columns(df_SEM):
     #remove particles with 0 in category
     df_SEM=df_SEM.drop(df_SEM[df_SEM['Class']==0].index)
     
-    
-
-    
     return df_SEM
+
+def plot_SEM_composition(file):
+    
